@@ -1,103 +1,146 @@
-import Image from "next/image";
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+import Lenis from '@studio-freight/lenis';
+
+import Navbar3 from './components/Navbar3';
+import Hero from './components/Hero';
+import Hero3 from './components/Hero3';
+import Hero4 from './components/Hero4';
+import TitleMaskEffect from './components/TitleMaskEffect';
+import Mask1 from './components/Mask1';
+import SimultaneousWords from './components/SimultaneousWords';
+import Title1 from './components/Title1';
+import Servis from './components/Servis';
+import Marquee from './components/Marquee';
+import TextSection from './components/TextSection1';
+import Services from './components/Services';
+import End from './components/End';
+
+import LoadingScreen from './components/LoadingScreen';
+import Aboutsection from "./components/Aboutsection"
+
+
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [loadingDone, setLoadingDone] = useState(false);
+  const lenisRef = useRef<Lenis | null>(null);
+  const scrollPosition = useRef(0);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  // Lock scroll with position: fixed when loading
+  useEffect(() => {
+    if (!loadingDone) {
+      // Save scroll position
+      scrollPosition.current = window.scrollY || window.pageYOffset;
+      // Fix body position and offset by scrollY to freeze scroll
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollPosition.current}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.overflow = 'hidden';
+      document.body.style.width = '100%';
+    } else {
+      // Remove fixed positioning and restore scroll
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollPosition.current);
+    }
+
+    return () => {
+      // Cleanup in case component unmounts
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+      document.body.style.width = '';
+    };
+  }, [loadingDone]);
+
+  useEffect(() => {
+    const loadingDuration = 3000;
+    const timer = setTimeout(() => {
+      setLoadingDone(true);
+    }, loadingDuration + 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Initialize Lenis only after loading finishes
+  useEffect(() => {
+    if (!loadingDone) return;
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    lenis.scrollTo(0, { immediate: true });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+    lenisRef.current = lenis;
+
+    return () => {
+      lenis.destroy();
+      lenisRef.current = null;
+    };
+  }, [loadingDone]);
+
+  return (
+    <>
+      {!loadingDone && <LoadingScreen />}
+      <div
+        className={`bg-[#ffffff] text-black transition-opacity duration-500 ${
+          loadingDone ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <Navbar3 />
+        <Hero3 /> <Mask1 />
+        <Hero4 />
+
+        <div className="bg-white">
+          <Hero />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className='p-5 '>
+            <Servis/>
+        </div>
+
+        <div className='p-5 '>
+           <Aboutsection/>
+        </div>
+
+        <Services/>
+      
+      
+
+        
+       
+
+       
+
+        
+
+       
+       
+
+       
+
+        
+        
+
+        <End />
+      </div>
+    </>
   );
 }
