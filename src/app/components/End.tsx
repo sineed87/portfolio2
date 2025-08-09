@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
         <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-8 text-sm">
           <div>
             <h3 className="mb-4 uppercase text-[12px] tracking-widest leading-4 text-gray-400">Explore</h3>
-            <ul className=" text-2xl">
+            <ul className=" text-2xl tracking-tighter">
               <li><a href="#" className="hover:text-gray-300">Inspiration</a></li>
               <li><a href="#" className="hover:text-gray-300">Articles</a></li>
               <li><a href="#" className="hover:text-gray-300">Showcase</a></li>
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
           </div>
           <div>
             <h3 className="mb-4 uppercase text-[12px] tracking-widest text-gray-400">Community</h3>
-            <ul className=" text-2xl">
+            <ul className=" text-2xl tracking-tighter">
               <li><a href="#" className="hover:text-gray-300">Submit Site</a></li>
               <li><a href="#" className="hover:text-gray-300">Nominees</a></li>
               <li><a href="#" className="hover:text-gray-300">Winners</a></li>
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
           </div>
           <div>
             <h3 className="mb-4 uppercase text-[12px] tracking-widest text-gray-400">About</h3>
-            <ul className=" text-2xl">
+            <ul className=" text-2xl tracking-tighter">
               <li><a href="#" className="hover:text-gray-300">Our Mission</a></li>
               <li><a href="#" className="hover:text-gray-300">Contact</a></li>
               <li><a href="#" className="hover:text-gray-300">Careers</a></li>
