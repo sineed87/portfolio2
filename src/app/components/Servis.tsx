@@ -1,16 +1,16 @@
-import Image from "next/image";
 
-import { Roboto } from "@next/font/google";
-
+import localFont from "next/font/local";
 
 
-const roboto = Roboto({
-  weight: ["400", "500", "700"],
-  subsets: ["latin"],
+
+const helveticalight = localFont({
+  src: "../fonts/HelveticaNeueLight.otf",
 });
 
+
+
 export default function ServicesPage() {
-  const services = [
+  const servicesLeft = [
     {
       id: "01",
       title: "Brand Strategy",
@@ -24,7 +24,6 @@ export default function ServicesPage() {
         "Naming & Copywriting",
         "Workshops",
       ],
-      image: "/images/p4.png",
     },
     {
       id: "02",
@@ -40,7 +39,6 @@ export default function ServicesPage() {
         "Product Design",
         "Digital Design",
       ],
-      image: "/images/p5.jpg",
     },
     {
       id: "03",
@@ -56,35 +54,75 @@ export default function ServicesPage() {
         "CMS Development",
         "Databases",
       ],
-      image: "/images/photo2.jpg",
+    },
+  ];
+
+  const servicesRight = [
+    {
+      id: "A",
+      title: "Marketing Strategy",
+      description:
+        "Creating comprehensive marketing plans that align brand values with market demands for measurable growth.",
+      tags: [
+        "Campaign Planning",
+        "Content Marketing",
+        "Social Media Strategy",
+        "Email Marketing",
+        "Analytics & Reporting",
+      ],
+    },
+    {
+      id: "B",
+      title: "Product Innovation",
+      description:
+        "Collaborating with teams to develop breakthrough products from concept to launch with user-centered design.",
+      tags: [
+        "Idea Workshops",
+        "Prototyping",
+        "User Testing",
+        "Market Validation",
+        "Launch Strategy",
+      ],
+    },
+    {
+      id: "C",
+      title: "Creative Direction",
+      description:
+        "Guiding creative vision across media to ensure cohesive storytelling and brand consistency.",
+      tags: [
+        "Art Direction",
+        "Photography",
+        "Videography",
+        "Copywriting",
+        "Campaign Design",
+      ],
     },
   ];
 
   return (
-    <div className={`${roboto.className} bg-[#121212] rounded-[24px] text-white p-10 `}
-     >
+    <div
+      className={`${helveticalight.className} bg-[#121212] rounded-[24px] text-white p-10`}
+    >
       {/* Header */}
-      <div className="pl-20 space-y-4 mb-12 ">
+      <div className="pl-20 space-y-4 mb-12">
         <h3 className="uppercase text-sm text-gray-400">Services</h3>
-        <h1 className="text-5xl font-bold max-w-5xl leading-tight">
-          Evolving with every brief and built for impact, my process
-          spans design, development, and brand strategy—aligning
-          vision with execution to bring clarity and edge to every
-          project.
+        <h1 className="text-5xl font-bold max-w-5xl leading-tight ">
+          Evolving with every brief and built for impact, my process spans
+          design, development, and brand strategy—aligning vision with
+          execution to bring clarity and edge to every project.
         </h1>
       </div>
 
-      {/* Service Rows with dividers */}
-      <div className="pl-20 pr-10 divide-y  divide-[#333]">
-        {services.map((service) => (
-          <div key={service.id} className="py-12 flex flex-row gap-12 items-start">
-            {/* Left: Text */}
-            <div className="flex-1 space-y-6">
-              <p className="text-gray-400 text-sm">{service.id}</p>
+      {/* Two-column rows */}
+      <div className="grid grid-cols-2 gap-20 pl-20 pr-10   ">
+        {/* Left Column */}
+        <div className="space-y-12 ">
+          {servicesLeft.map((service) => (
+            <div key={service.id} className="space-y-6 ">
               <h2 className="text-3xl font-semibold">{service.title}</h2>
-              <p className="text-base text-gray-300 max-w-xl">{service.description}</p>
-
-              {/* Tags */}
+              <p className="text-base text-gray-300 max-w-xl">
+                {service.description}
+              </p>
               <div className="flex flex-wrap gap-2">
                 {service.tags.map((tag) => (
                   <span
@@ -96,19 +134,30 @@ export default function ServicesPage() {
                 ))}
               </div>
             </div>
+          ))}
+        </div>
 
-            {/* Right: Image */}
-            <div className="w-[300px] shrink-0 outline-1 rounded-[16px]">
-              <Image
-                src={service.image}
-                alt={service.title}
-                width={300}
-                height={200}
-                className="rounded-lg object-cover w-full h-auto"
-              />
+        {/* Right Column */}
+        <div className="space-y-12 pl-12">
+          {servicesRight.map((service) => (
+            <div key={service.id} className="space-y-6">
+              <h2 className="text-3xl font-semibold">{service.title}</h2>
+              <p className="text-base text-gray-300 max-w-xl">
+                {service.description}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {service.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-[#2a2a2a] text-xs px-3 py-1 rounded-full whitespace-nowrap"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

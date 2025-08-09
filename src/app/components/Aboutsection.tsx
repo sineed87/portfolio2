@@ -5,7 +5,7 @@ import React from 'react'
 
 import localFont from 'next/font/local'
 
-import { Roboto } from "@next/font/google";
+import { Roboto } from "next/font/google";
 
 
 const roboto = Roboto({
@@ -21,7 +21,7 @@ const montreg = localFont({
 
 export default function AboutPage() {
   return (
-    <div className={`${montreg.className} p-10 space-y-8 text-[#1C1C1C] bg-[#EAF9FB] rounded-[24px] min-h-screen box-border `} >
+    <div className={`${montreg.className} p-10 space-y-8 text-[#222222] bg-[#EFEEEC] rounded-[24px] min-h-screen box-border `} >
       {/* Top Row */}
       <div className="flex justify-between items-center w-full mb-28">
         <div>

@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useRef } from 'react';
 import localFont from 'next/font/local';
 
-const montreg = localFont({
-  src: '../fonts/montreg.otf',
+const italic = localFont({
+  src: '../fonts/Aster Italic.ttf',
 });
 
 const helvetica = localFont({
@@ -15,42 +14,39 @@ const helvetica = localFont({
 export default function FullWidthBigText() {
   const textRef = useRef<HTMLHeadingElement>(null);
 
-  useEffect(() => {
-    if (textRef.current) {
-      gsap.to(textRef.current.children, {
-        color: '#121212',
-        duration: 2,
-        stagger: 0.2,
-        ease: 'power2.out',
-      });
-    }
-  }, []);
-
   return (
-    <div className="w-full  items-center min-h-[30rem] relative overflow-hidden bg-[#FCFFFF] p-10 pt-20 pb-20">
+    <div className="w-full items-center min-h-[30rem] relative overflow-hidden bg-[#EFEEEC] leading-[1] p-10 pt-20 pb-10">
       {/* Left-aligned Animated Text */}
       <h1
         ref={textRef}
-        className={`${helvetica.className} text-9xl tracking-tighter  z-10 flex flex-col `}
+        className={`${helvetica.className} text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tighter leading-[1.1] z-10 flex flex-col`}
       >
-        
-           <span style={{ color: '#121212' }}>We build bold ideas</span>
-       
-       
-       
+        <span>
+          We build{' '}
+          <span className={`${italic.className} text-6xl sm:text-7xl md:text-8xl lg:text-9xl z-10`}>
+            bold ideas
+          </span>{' '}
+        </span>
 
-        <span style={{ color: '#aaa' }}>Into unforgettable digital</span>
-        <span style={{ color: '#aaa' }}>Experiences. </span>
+        <span>Into unforgettable digital</span>
+
+        <div className="flex flex-col sm:flex-row sm:items-center">
+          <span>Experiences</span>
+
+          <video
+            src="/videos/port1.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-40 sm:w-44 h-auto pl-0 sm:pl-4 mt-4 sm:mt-0"
+          />
+        </div>
       </h1>
 
-      <div className='pt-20 flex justify-between  text-sm'>
-        <h1>SCROLL DOWN</h1>
-
-        <h1 className='underline'>EXPLORE IDEAS</h1>
+      <div className="pt-10 flex justify-end text-sm">
+        <h1 className="underline cursor-pointer">EXPLORE IDEAS</h1>
       </div>
-
-      {/* Sidebar */}
-
     </div>
   );
 }

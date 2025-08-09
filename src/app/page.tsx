@@ -7,59 +7,18 @@ import Navbar3 from './components/Navbar3';
 import Hero from './components/Hero';
 import Hero3 from './components/Hero3';
 import Hero4 from './components/Hero4';
-import TitleMaskEffect from './components/TitleMaskEffect';
-import Mask1 from './components/Mask1';
-import SimultaneousWords from './components/SimultaneousWords';
-import Title1 from './components/Title1';
-import Servis from './components/Servis';
+import Hero5 from './components/Hero5';
 import Marquee from './components/Marquee';
-import TextSection from './components/TextSection1';
-import Services from './components/Services';
+import Servis from './components/Servis';
+
 import End from './components/End';
-
-import LoadingScreen from './components/LoadingScreen';
-import Aboutsection from "./components/Aboutsection"
-
+import Aboutsection from "./components/Aboutsection";
+import Sec from './components/Sec';
 
 
 export default function Home() {
   const [loadingDone, setLoadingDone] = useState(false);
   const lenisRef = useRef<Lenis | null>(null);
-  const scrollPosition = useRef(0);
-
-  // Lock scroll with position: fixed when loading
-  useEffect(() => {
-    if (!loadingDone) {
-      // Save scroll position
-      scrollPosition.current = window.scrollY || window.pageYOffset;
-      // Fix body position and offset by scrollY to freeze scroll
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollPosition.current}px`;
-      document.body.style.left = '0';
-      document.body.style.right = '0';
-      document.body.style.overflow = 'hidden';
-      document.body.style.width = '100%';
-    } else {
-      // Remove fixed positioning and restore scroll
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
-      document.body.style.overflow = '';
-      document.body.style.width = '';
-      window.scrollTo(0, scrollPosition.current);
-    }
-
-    return () => {
-      // Cleanup in case component unmounts
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
-      document.body.style.overflow = '';
-      document.body.style.width = '';
-    };
-  }, [loadingDone]);
 
   useEffect(() => {
     const loadingDuration = 3000;
@@ -70,7 +29,6 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Initialize Lenis only after loading finishes
   useEffect(() => {
     if (!loadingDone) return;
 
@@ -97,50 +55,33 @@ export default function Home() {
     };
   }, [loadingDone]);
 
+  if (!loadingDone) {
+    return <div>Loading...</div>;  // Or your LoadingScreen component here
+  }
+
   return (
     <>
-      {!loadingDone && <LoadingScreen />}
-      <div
-        className={`bg-[#ffffff] text-black transition-opacity duration-500 ${
-          loadingDone ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
-      >
-        <Navbar3 />
-        <Hero3 /> <Mask1 />
-        <Hero4 />
-
-        <div className="bg-white">
-          <Hero />
-        </div>
-        <div className='p-5 '>
-            <Servis/>
-        </div>
-
-        <div className='p-5 '>
-           <Aboutsection/>
-        </div>
-
-        <Services/>
-      
-      
-
-        
-       
-
-       
-
-        
-
-       
-       
-
-       
-
-        
-        
-
-        <End />
+      <Navbar3 />
+      <Hero3 /> 
+      <div className='pl-10 pr-20 bg-[#EFEEEC]'>
+        <Marquee/>
       </div>
+     
+      <Hero5/>
+
+      <Hero4 />
+      <div className="bg-[#EFEEEC]">
+        <Hero />
+      </div>
+      <Sec/>
+      <div className='p-5 bg-[#EFEEEC] '>
+        <Servis/>
+      </div>
+      <div className='p-5 bg-[#EFEEEC]'>
+        <Aboutsection/>
+      </div>
+      
+      <End />
     </>
   );
 }

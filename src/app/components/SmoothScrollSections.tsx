@@ -15,9 +15,9 @@ const SmoothScrollSections: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const sections = gsap.utils.toArray(".section");
+    const sectionElements = gsap.utils.toArray<HTMLElement>(".section");
 
-    sections.forEach((section: any, i) => {
+    sectionElements.forEach((section) => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,

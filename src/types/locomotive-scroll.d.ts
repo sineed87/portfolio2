@@ -26,13 +26,24 @@ declare module 'locomotive-scroll' {
     smoothMobile?: boolean;
   }
 
+  interface ScrollToOptions {
+    offset?: number; // Distance from top in px
+    duration?: number; // Animation duration in ms
+    easing?: [number, number, number, number]; // Cubic bezier array
+    disableLerp?: boolean; // Disable smoothing
+    callback?: () => void; // Called after scroll completes
+  }
+
   export default class LocomotiveScroll extends EventEmitter {
     constructor(options: LocomotiveScrollOptions);
     destroy(): void;
     update(): void;
     start(): void;
     stop(): void;
-    scrollTo(target: string | HTMLElement | number, options?: any): void;
+    scrollTo(
+      target: string | HTMLElement | number,
+      options?: ScrollToOptions
+    ): void;
     setScroll(x: number, y: number): void;
   }
 }
