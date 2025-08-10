@@ -72,9 +72,12 @@ export default function Home() {
       <Hero4 />
       <div className="bg-[#EFEEEC]">
         <Hero />
+      </div> 
+      <div className='p-4 bg-[#EFEEEC]'>
+        <Sec/>
       </div>
-      <Sec/>
-      <div className='p-5 bg-[#EFEEEC] '>
+      
+      <div className='p-4 bg-[#EFEEEC] '>
         <Servis/>
       </div>
       <div className='p-5 bg-[#EFEEEC]'>

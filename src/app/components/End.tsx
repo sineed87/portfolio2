@@ -1,10 +1,11 @@
 import React from "react";
 
 import localFont from 'next/font/local';
+import { ArrowUpRight } from "lucide-react";
 
 
 const helvetica = localFont({
-    src: '../fonts/HelveticaNeueMedium.otf',
+  src: '../fonts/HelveticaNeueMedium.otf',
 });
 
 const Footer: React.FC = () => {
@@ -14,14 +15,19 @@ const Footer: React.FC = () => {
       <div className="relative z-10 pl-8 mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
         {/* Left Section - Email Signup */}
         <div className="flex-1 ">
-          <p className="text-2xl mb-2">Stay updated with Noirhaus news</p>
+          <p className="text-2xl mb-2  tracking-tight font-semibold">Stay updated with Noirhaus news</p>
           <div className="flex items-center bg-[#282828] rounded-full">
             <input
               type="email"
               placeholder="Your Email Address"
-              className="bg-transparent text-white p-2 w-full focus:outline-none placeholder-gray-400"
+              className="bg-transparent text-white p-4 w-full focus:outline-none placeholder-gray-400"
             />
-            
+
+            <button className="inline-flex h-12 w-12 mr-2 items-center justify-center rounded-full bg-[#B2F6E3] ">
+              <ArrowUpRight className="h-6 w-6 text-black ml-1 " />
+            </button>
+
+
           </div>
           <div className="flex space-x-4 mt-4 text-sm">
             <a href="#" className="hover:text-gray-300">f</a>
@@ -36,26 +42,26 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Right Section - Navigation */}
-        <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-8 text-sm">
+        <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-8 text-sm font-bold">
           <div>
-            <h3 className="mb-4 uppercase text-[12px] tracking-widest leading-4 text-gray-400">Explore</h3>
-            <ul className=" text-2xl tracking-tighter">
+            <h3 className="mb-4 uppercase text-[12px] tracking-wide leading-3 text-white">Explore</h3>
+            <ul className=" text-2xl tracking-tight leading-7">
               <li><a href="#" className="hover:text-gray-300">Inspiration</a></li>
               <li><a href="#" className="hover:text-gray-300">Articles</a></li>
               <li><a href="#" className="hover:text-gray-300">Showcase</a></li>
             </ul>
           </div>
           <div>
-            <h3 className="mb-4 uppercase text-[12px] tracking-widest text-gray-400">Community</h3>
-            <ul className=" text-2xl tracking-tighter">
+            <h3 className="mb-4 uppercase text-[12px] tracking-widest text-white">Community</h3>
+            <ul className=" text-2xl  tracking-tight leading-7">
               <li><a href="#" className="hover:text-gray-300">Submit Site</a></li>
               <li><a href="#" className="hover:text-gray-300">Nominees</a></li>
               <li><a href="#" className="hover:text-gray-300">Winners</a></li>
             </ul>
           </div>
           <div>
-            <h3 className="mb-4 uppercase text-[12px] tracking-widest text-gray-400">About</h3>
-            <ul className=" text-2xl tracking-tighter">
+            <h3 className="mb-4 uppercase text-[12px] tracking-widest text-white">About</h3>
+            <ul className=" text-2xl  tracking-tight leading-7">
               <li><a href="#" className="hover:text-gray-300">Our Mission</a></li>
               <li><a href="#" className="hover:text-gray-300">Contact</a></li>
               <li><a href="#" className="hover:text-gray-300">Careers</a></li>

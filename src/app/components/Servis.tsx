@@ -1,4 +1,5 @@
 
+import { ArrowUpRight } from "lucide-react";
 import localFont from "next/font/local";
 
 
@@ -101,33 +102,26 @@ export default function ServicesPage() {
 
   return (
     <div
-      className={`${helveticalight.className} bg-[#121212] rounded-[24px] text-white p-10`}
+      className={`${helveticalight.className} text-black rounded-[24px] p-10 pb-20 `}
     >
       {/* Header */}
-      <div className="pl-20 space-y-4 mb-12">
-        <h3 className="uppercase text-sm text-gray-400">Services</h3>
-        <h1 className="text-5xl font-bold max-w-5xl leading-tight ">
-          Evolving with every brief and built for impact, my process spans
-          design, development, and brand strategy—aligning vision with
-          execution to bring clarity and edge to every project.
-        </h1>
-      </div>
+     
 
       {/* Two-column rows */}
-      <div className="grid grid-cols-2 gap-20 pl-20 pr-10   ">
+      <div className="grid grid-cols-2 gap-25  pr-10  ">
         {/* Left Column */}
-        <div className="space-y-12 ">
+        <div className="space-y-12  ">
           {servicesLeft.map((service) => (
             <div key={service.id} className="space-y-6 ">
               <h2 className="text-3xl font-semibold">{service.title}</h2>
-              <p className="text-base text-gray-300 max-w-xl">
+              <p className="text-base text-black max-w-xl">
                 {service.description}
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 border-b pb-5 border-gray-300">
                 {service.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-[#2a2a2a] text-xs px-3 py-1 rounded-full whitespace-nowrap"
+                    className="bg-[#222222]  text-white text-xs px-3 py-1 rounded-full whitespace-nowrap"
                   >
                     {tag}
                   </span>
@@ -138,18 +132,18 @@ export default function ServicesPage() {
         </div>
 
         {/* Right Column */}
-        <div className="space-y-12 pl-12">
+        <div className="space-y-12 ">
           {servicesRight.map((service) => (
             <div key={service.id} className="space-y-6">
               <h2 className="text-3xl font-semibold">{service.title}</h2>
-              <p className="text-base text-gray-300 max-w-xl">
+              <p className="text-base text-black max-w-xl">
                 {service.description}
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 border-b pb-5 border-gray-300">
                 {service.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-[#2a2a2a] text-xs px-3 py-1 rounded-full whitespace-nowrap"
+                    className="bg-[#222222] text-white text-xs px-3 py-1 rounded-full whitespace-nowrap"
                   >
                     {tag}
                   </span>

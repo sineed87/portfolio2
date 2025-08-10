@@ -108,7 +108,7 @@ export default function BentoGrid() {
           </span>
           <div className='flex  gap-2 text-white bg-[#222222] z-10 items-center absolute left-0 top-0 h-full w-full justify-center translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 rounded-full group-hover:rounded-none '>
             <div className='flex items-center gap-4'>
-              <h1 className={` ${helveticalight.className} text-[26px] `}> See All </h1>
+              <h1 className={` ${helveticalight.className} text-[26px] `}> Our Work </h1>
               <div className=''>
                 <ArrowUpRight size={24} />
               </div>

@@ -13,6 +13,10 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
+const helvetica = localFont({
+    src: '../fonts/HelveticaNeueMedium.otf',
+});
+
 
 
 const montreg = localFont({
@@ -21,7 +25,7 @@ const montreg = localFont({
 
 export default function AboutPage() {
   return (
-    <div className={`${montreg.className} p-10 space-y-8 text-[#222222] bg-[#EFEEEC] rounded-[24px] min-h-screen box-border `} >
+    <div className={`${helvetica.className} p-10 space-y-8 mb-20 text-[#222222] bg-[#EFEEEC] rounded-[24px] min-h-screen box-border `} >
       {/* Top Row */}
       <div className="flex justify-between items-center w-full mb-28">
         <div>
@@ -59,11 +63,11 @@ export default function AboutPage() {
               <span className="underline cursor-pointer">Play reel</span>
             </div>
 
-            <p className={`${roboto.className} text-sm font-normal max-w-80 `}>
+            <p className={`${helvetica.className} text-sm font-normal max-w-80 `}>
              Our approach is shaped by an integrated agency model and a fiercely collaborative spirit—fueling bold, original work that drives impact and defines culture.
             </p>
 
-            <div className={`${roboto.className} text-xs `}>
+            <div className={`${helvetica.className} text-sm `}>
                   <button className="group relative h-12 bg-[#2c2c2c] px-4 rounded-full text-[#EAF9FB] transition-colors duration-500">
               <span className="relative inline-flex overflow-hidden">
                 <div className="translate-y-0 p-2 flex items-center skew-y-0 transition duration-500 group-hover:-translate-y-[110%] group-hover:skew-y-12 group-hover:text-white">
@@ -92,8 +96,8 @@ export default function AboutPage() {
             Creativity is the single most valuable investment a brand can make, because it multiplies everything else.
           </h1>
 
-          <div className="flex flex-col lg:flex-row gap-8 items-start">
-            <h2 className="text-3xl font-bold whitespace-nowrap">HAUSideas® 
+          <div className="flex flex-col lg:flex-row gap-8 items-start pt-12">
+            <h2 className="text-3xl font-black whitespace-nowrap">HAUSideas® 
                 </h2>
             <ul className="space-y-2 text-lg">
               <li>#1 in Sports on the App Store</li>
