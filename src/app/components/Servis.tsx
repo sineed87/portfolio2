@@ -1,5 +1,5 @@
 
-import { ArrowUpRight } from "lucide-react";
+
 import localFont from "next/font/local";
 
 

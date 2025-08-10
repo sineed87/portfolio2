@@ -5,13 +5,10 @@ import React from 'react'
 
 import localFont from 'next/font/local'
 
-import { Roboto } from "next/font/google";
 
 
-const roboto = Roboto({
-  weight: ["400", "500", "700"],
-  subsets: ["latin"],
-});
+
+
 
 const helvetica = localFont({
     src: '../fonts/HelveticaNeueMedium.otf',
@@ -19,9 +16,7 @@ const helvetica = localFont({
 
 
 
-const montreg = localFont({
-  src: '../fonts/montreg.otf',
-});
+
 
 export default function AboutPage() {
   return (
